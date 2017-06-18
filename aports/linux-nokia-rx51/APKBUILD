@@ -20,7 +20,7 @@ case $pkgver in
 	*.*.*)  _kernver=${pkgver%.*};;
 	*.*) _kernver=$pkgver;;
 esac
-pkgrel=1
+pkgrel=2
 arch="armhf"
 pkgdesc="Mainline Linux for the Nokia N900"
 url="https://github.com/pali/linux-n900"
@@ -109,4 +109,4 @@ package() {
 }
 
 sha512sums="ad1288233893ce3de9c81f4672f4f2439c8d6665a0a0289f5cbe826fd08c69292de02a2fd9856dcd6d91c7f6930273319e1888bf0a146aee3a4e1ff50f6f7b19  linux-nokia-rx51-7b6fbfd899b4133e4f789843e5967beb139ec4d2.tar.gz
-6b9ef5266bf95314b76c6973036b8e66cfa3b27efee84524f8c9a4316cbc29e289b1d56c99d8bcdf5516bdc743ab1a2bea4b277d3cff88d0e07de4b514d65e77  config-nokia-rx51.armhf"
+382586041426f68ee466e329e386ea201bb8749cfa52d64b1822b534ec1d6d1fd2bbc099762803c11989d18b749d0bf43ed5a397493bdf9e7e602123a27d9b96  config-nokia-rx51.armhf"
