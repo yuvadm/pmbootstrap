@@ -20,7 +20,7 @@ case $pkgver in
 	*.*.*)  _kernver=${pkgver%.*};;
 	*.*) _kernver=$pkgver;;
 esac
-pkgrel=3
+pkgrel=4
 arch="armhf"
 pkgdesc="Mozilla flame kernel"
 url="https://github.com/mozilla-b2g/codeaurora_kernel_msm"
@@ -97,10 +97,10 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/dtb"
+	mkdir -p "$pkgdir/usr/lib/linux-mozilla-flame"
 	for dtb in $(find "$srcdir/build/arch/arm/boot" -name "*.dtb")
 	do
-		install -m644 $dtb "$pkgdir/usr/share/dtb/"
+		install -m644 $dtb "$pkgdir/usr/lib/linux-mozilla-flame/"
 	done
 
 	install -Dm644 "$srcdir/build/arch/arm/boot/dt.img" \
