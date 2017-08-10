@@ -9,6 +9,5 @@ echo "192M" > /sys/block/zram0/disksize
 
 # params to get the screen working
 echo "480,1708" > /sys/devices/virtual/graphics/fb0/virtual_size
-echo "VSYNC=363784349135" > /sys/devices/virtual/graphics/fb0/vsync_event
 echo "panel_power_on = 0" > /sys/devices/virtual/graphics/fb0/show_blank_event
 
