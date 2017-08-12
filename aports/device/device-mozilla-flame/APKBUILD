@@ -7,9 +7,9 @@ arch="noarch"
 license="MIT"
 depends="linux-mozilla-flame mkbootimg"
 makedepends=""
-install=""
+install="$pkgname.post-install"
 subpackages=""
-source="deviceinfo initfs-hook.sh 90-android-touch-dev.rules"
+source="deviceinfo initfs-hook.sh 90-android-touch-dev.rules $install"
 options="!check"
 
 build() {
