@@ -95,8 +95,8 @@ build() {
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-Alpine" CONFIG_NO_ERROR_ON_MISMATCH=y DTC_FLAGS="-p 1024" \
 		|| return 1
 
-	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-Alpine" CONFIG_NO_ERROR_ON_MISMATCH=y modules \
+	make ARCH="$_carch" CC="${CC:-gcc}" CFLAGS_MODULE="-fno-pic" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-Alpine" CONFIG_NO_ERROR_ON_MISMATCH=y DTC_FLAGS="-p 1024" modules \
 		|| return 1
 
 	dtbTool -s 2048 -p "scripts/dtc/" -o "arch/arm/boot/dt.img" "arch/arm/boot/"
@@ -109,10 +109,6 @@ package() {
 	make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-Alpine" CONFIG_NO_ERROR_ON_MISMATCH=y \
 		INSTALL_MOD_PATH="${pkgdir}" modules_install
-
-	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-Alpine" CONFIG_NO_ERROR_ON_MISMATCH=y \
-		INSTALL_MOD_PATH="${pkgdir}" firmware_install
 
 	rm "${pkgdir}/lib/modules/${pkgver}/build"
 	install -Dm644 "${srcdir}"/build/Module.symvers "${pkgdir}/lib/modules/${pkgver}/build/Module.symvers"
@@ -130,7 +126,7 @@ package() {
 	install -Dm644 "$srcdir/build/arch/arm/boot/dt.img" \
 		"$pkgdir/boot/dt.img"
 
-	install -Dm644 "$srcdir/build/arch/arm/boot/zImage-dtb" \
+	install -Dm644 "$srcdir/build/arch/arm/boot/zImage" \
 		"$pkgdir/boot/vmlinuz-$_flavor"
 
 	install -D "$srcdir/build/include/config/kernel.release" \
