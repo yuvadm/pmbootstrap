@@ -4,11 +4,19 @@
 mkdir /{data,persist,modem}
 
 # Add firmware partitions to fstab
-echo "/dev/mmcblk0p29     /data       ext4    defaults        0       2" >> /etc/fstab
-echo "/dev/mmcblk0p13     /persist    ext4    defaults        0       2" >> /etc/fstab
-echo "/dev/mmcblk0p1      /modem      vfat    defaults        0       2" >> /etc/fstab
+if [ -z "$(grep /data /etc/fstab)" ]; then
+    echo "/dev/mmcblk0p29     /data       ext4    defaults        0       2" >> /etc/fstab
+fi
 
-# Link all on-device firmware
-ln -s /modem/image/{adsp,cmnlib,mba,modem,playread,tqs,wcnss,widevine}.mdt /lib/firmware/
+if [ -z "$(grep /persist /etc/fstab)" ]; then
+    echo "/dev/mmcblk0p13     /persist    ext4    defaults        0       2" >> /etc/fstab
+fi
+
+if [ -z "$(grep /modem /etc/fstab)" ]; then
+    echo "/dev/mmcblk0p1      /modem      vfat    defaults        0       2" >> /etc/fstab
+fi
+
+# Link modem partition to firmware
+ln -s /modem/image /lib/firmware/modem
 
 exit 0
