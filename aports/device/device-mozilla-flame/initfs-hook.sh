@@ -9,5 +9,14 @@ echo "192M" > /sys/block/zram0/disksize
 
 # params to get the screen working
 echo "480,1708" > /sys/devices/virtual/graphics/fb0/virtual_size
-echo "panel_power_on = 0" > /sys/devices/virtual/graphics/fb0/show_blank_event
 
+# Add firmware partition mount points
+mkdir /{data,persist,modem}
+
+# Add firmware partitions to fstab
+echo "/dev/mmcblk0p29     /data       ext4    defaults        0       2" >> /etc/fstab
+echo "/dev/mmcblk0p13     /persist    ext4    defaults        0       2" >> /etc/fstab
+echo "/dev/mmcblk0p1      /modem      vfat    defaults        0       2" >> /etc/fstab
+
+# Link all on-device firmware
+ln -s /modem/image/{adsp,cmnlib,mba,modem,playread,tqs,wcnss,widevine}.mdt /lib/firmware/

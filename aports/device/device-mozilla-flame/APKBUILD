@@ -7,9 +7,9 @@ arch="noarch"
 license="MIT"
 depends="linux-mozilla-flame mkbootimg"
 makedepends=""
-install="$pkgname.post-install"
+install=""
 subpackages=""
-source="deviceinfo initfs-hook.sh 50-firmware.rules 90-android-touch-dev.rules firmware.sh $install"
+source="deviceinfo initfs-hook.sh 50-firmware.rules 90-android-touch-dev.rules firmware.sh"
 options="!check"
 
 build() {
@@ -30,8 +30,7 @@ package() {
 }
 
 sha512sums="bf1d5c11ec1bb20ed70d664725fbedd5ce5773cbcfbe4148ac8f93377c6b97517f84f66a62fe35f14cff747ac96515c5969f92e07a130163c5541e3daa75f362  deviceinfo
-6a0622ddfe156d8a882e5e1318cd0d243316f4a0eff7e0f5499bca1e04331e5d99f9d80c13e9be88c55c300d93b33c1692fe6b508bf614c8c1f319569d73558d  initfs-hook.sh
+1d4fcc0ab874e4a534b566a4a4615382fd1ce232127a97080d357a3fd80c1d52e0805cde3ae1de3487682b864ef20a180f2bc7dd8ca467e3ae7ea81f5cbbb461  initfs-hook.sh
 7e6bd7cbfdb37fb8ad405d0b72a958e72d1e661c4b718e8a3af3c1a351c673a3ef04114780a97c0d80597dd8616a1dfbd91da36eab1d330e0fb1ad96fdc4ac04  50-firmware.rules
 ee25f3d0377f027d108593eb7953b8db49d7f05a5c36a0c8ca7e7849d15e3c217bc1ac97d77a66e28d2db4b81c0f50b905639911276da40321d2b6cca7f797df  90-android-touch-dev.rules
-831238bcb3693e78df75a1862642ceff379f152dcba7df82afb5570b2102fa83e3df81546c25779e1dd1dde1846d2cb2ed9a9b5affd20e5dbe052553c47a75ab  firmware.sh
-a7ef3537c89ed8b93dba6ece8145801c626c35358414c4d435fd1e7538bdce0f6573c2c7f0dea0d07537c462e99766d5c74e1eeec42766ac28b31f08bf7c85ff  device-mozilla-flame.post-install"
+831238bcb3693e78df75a1862642ceff379f152dcba7df82afb5570b2102fa83e3df81546c25779e1dd1dde1846d2cb2ed9a9b5affd20e5dbe052553c47a75ab  firmware.sh"
