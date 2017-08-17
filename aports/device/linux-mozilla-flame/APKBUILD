@@ -20,11 +20,11 @@ case $pkgver in
 	*.*.*)  _kernver=${pkgver%.*};;
 	*.*) _kernver=$pkgver;;
 esac
-pkgrel=13
+pkgrel=14
 arch="armhf"
 pkgdesc="Mozilla flame kernel"
 url="https://github.com/mozilla-b2g/codeaurora_kernel_msm"
-depends="postmarketos-mkinitfs"
+depends="postmarketos-mkinitfs wcnss-service"
 makedepends="dtbtool perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev"
 options="!strip !check !tracedeps"
 install=
