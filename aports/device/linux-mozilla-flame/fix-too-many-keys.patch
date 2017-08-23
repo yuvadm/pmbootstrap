@@ -1,0 +1,25 @@
+From 57ba6990840ef09442f70538e4da25fcfd3a399a Mon Sep 17 00:00:00 2001
+From: Yuval Adam <_@yuv.al>
+Date: Wed, 23 Aug 2017 11:00:17 +0300
+Subject: [PATCH] Fix add_uevent_var: too many keys warnings
+
+---
+ include/linux/kobject.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/linux/kobject.h b/include/linux/kobject.h
+index fc615a97..dcacf452 100644
+--- a/include/linux/kobject.h
++++ b/include/linux/kobject.h
+@@ -28,7 +28,7 @@
+ #include <linux/atomic.h>
+ 
+ #define UEVENT_HELPER_PATH_LEN		256
+-#define UEVENT_NUM_ENVP			32	/* number of env pointers */
++#define UEVENT_NUM_ENVP			64	/* number of env pointers */
+ #define UEVENT_BUFFER_SIZE		2048	/* buffer for the variables */
+ 
+ /* path to the userspace helper executed on an event */
+-- 
+2.13.4
+
